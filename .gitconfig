@@ -1,0 +1,11 @@
+[user]
+	email = mustafacan.tekir@gmail.com
+	name = Mustafa Can Tekir
+
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[core]
+	excludesfile = ~/.gitignore
