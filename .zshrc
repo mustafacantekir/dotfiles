@@ -18,7 +18,7 @@ alias reload='source ~/.zshrc'
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-gcob() { BRANCH=$1; git co $(git branch | grep --color=never $BRANCH | peco --select-1 --prompt "BRANCH>"); }
+gcob() { git checkout $(git branch -a | grep -i --color=never ${1:-.} | sed -E -e 's!.*/!!' -e 's/\*? +//' | sort | uniq | peco --select-1 --prompt 'BRANCH>'); }
 
 git-pull-all(){
 	currentDirectory="$PWD";
