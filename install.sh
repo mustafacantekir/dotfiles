@@ -4,9 +4,9 @@
 brew tap homebrew/cask-versions
 brew install awscli aws-shell ansible coreutils colordiff go node typescript \
 	httpie htop git git-crypt groovy jmeter jq kafkacat maven python redis \
-	stunnel telnet tree watch openssl wget yarn peco unrar zsh
-brew cask install iterm2 rectangle spotify sublime-text google-chrome \
-	firefox-developer-edition slack docker skype bitwarden calibre evernote jetbrains-toolbox flux
+	stunnel telnet tree watch openssl wget yarn peco zsh
+brew install --cask iterm2 cryptomator rectangle spotify sublime-text google-chrome flux \
+	firefox-developer-edition slack docker skype bitwarden calibre evernote jetbrains-toolbox
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
