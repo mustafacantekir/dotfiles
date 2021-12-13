@@ -1,0 +1,125 @@
+" directory for the plugins
+call plug#begin('~/.vim/plugged')
+
+" ack: grep like source code search tool
+Plug 'mileszs/ack.vim'
+
+" syntax related plugins
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+
+" colorscheme 
+Plug 'tomasr/molokai'
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+" file system explorer
+Plug 'preservim/nerdtree'
+let NERDTreeShowHidden=1
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+
+" autocomplete
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+
+" fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" nerd commenter
+Plug 'preservim/nerdcommenter'
+
+" initialize plugin system
+call plug#end()
+filetype plugin indent on    " required
+
+let mapleader=' ' 
+
+" enter current millenium
+set nocompatible
+
+" set encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+" show line numbers
+set number 
+
+" enable syntax 
+syntax on 
+
+set hidden
+
+" enable theme
+colorscheme molokai 
+
+" finding files:
+" search down into subfolders
+" provides tab-completion for all file-related tasks
+set path+=**
+
+" display all matching files when we tab complete
+set wildmenu
+
+" expand tab to spaces
+set expandtab          
+" tab size
+set tabstop=2
+" soft tab size
+set softtabstop=2
+" indent size
+set shiftwidth=2      
+
+" now we can hit tab to :find by partial match
+" use * to make it fuzzy
+" :b lets you autocomplete any open buffer
+
+" read an empty HTML template and move cursor to title
+nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
+
+" NERDTree mappings
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" CoC mapping 
+" remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" apply autoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" CoC configuration
+let g:coc_global_extensions = [
+      \ 'coc-tsserver', 
+      \ 'coc-java',
+      \ 'coc-prettier',
+      \ 'coc-eslint',
+      \ 'coc-json']
+
+" nerdtree git plugin status indicator mapping"
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+" nerd commenter configuration
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+
+" ctrlp ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
